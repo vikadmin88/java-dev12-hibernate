@@ -8,15 +8,16 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class HibernatePropertyReader {
-    private static final Logger LOGGER = LoggerFactory.getLogger(HibernatePropertyReader.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HibernatePropertyReader.class.getCanonicalName());
     public static String getConnectionUrlForH2() {
+        LOGGER.info("Reading database properties [hibernate.properties]...");
         try (InputStream input = HibernatePropertyReader.class.getClassLoader()
-                .getResourceAsStream("db/hibernate.properties")) {
+                .getResourceAsStream("hibernate.properties")) {
 
             Properties prop = new Properties();
 
             if (input == null) {
-                LOGGER.error("Sorry, unable to find db/hibernate.properties");
+                LOGGER.error("Sorry, unable to find hibernate.properties");
                 return null;
             }
             prop.load(input);

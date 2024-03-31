@@ -1,3 +1,3 @@
 ## java-dev12-hibernate
 
-### hibernate, flyway, lombok, h2 
+### flyway migration, hibernate, annotations, validation, lombok, H2 db 
